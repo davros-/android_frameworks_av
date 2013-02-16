@@ -17,6 +17,7 @@ LOCAL_SRC_FILES:= \
         source/Sender.cpp               \
         source/TSPacketizer.cpp         \
         source/WifiDisplaySource.cpp    \
+        TimeSeries.cpp                  \
 
 LOCAL_C_INCLUDES:= \
         $(TOP)/frameworks/av/media/libstagefright \
@@ -64,6 +65,10 @@ include $(BUILD_EXECUTABLE)
 ################################################################################
 
 include $(CLEAR_VARS)
+
+ifneq ($(TI_CUSTOM_DOMX_PATH),)
+LOCAL_C_INCLUDES:= $(TI_CUSTOM_DOMX_PATH)/omx_core/inc
+endif
 
 LOCAL_SRC_FILES:= \
         udptest.cpp                 \
